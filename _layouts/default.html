@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ site.title }} | {{ site.subtitle }}</title>
+  <meta name="description" content="{{ site.description }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ site.title }} | {{ site.subtitle }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:url" content="{{ site.url }}">
+
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+
+{% comment %}
+Header: title and event details come from _config.yml.
+
+The mark on the right is the favicon's pin glyph, enlarged and faded. It is
+inlined (rather than <img src="favicon.svg">) and drops the favicon's background
+square: that square exists to make a 16px tab icon legible, but enlarged and
+faded it reads as a grey box and swamps the pin. Inlining also lets CSS colour
+it from the palette. Purely decorative, so aria-hidden, and hidden below 768px.
+If you change the pin in favicon.svg, change it here too.
+{% endcomment %}
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="header-text">
+      <h1 class="site-title">{{ site.title }}</h1>
+      <p class="site-subtitle">{{ site.subtitle }}</p>
+      <p class="event-meta">
+        <span class="event-date">{{ site.workshop_date }}</span><span class="event-place">{{ site.location }}</span>
+      </p>
+      <p class="event-colocated">
+        Co-located with <a href="https://conferences.sigcomm.org/imc/2026/">{{ site.conference }}</a>
+      </p>
+    </div>
+    <svg class="header-mark" viewBox="2.8 -0.4 26.4 29.8" aria-hidden="true" focusable="false">
+      <g class="header-mark-rays">
+        <line x1="6.61" y1="11.20" x2="4.07" y2="10.66"/>
+        <line x1="8.23" y1="7.56" x2="6.13" y2="6.03"/>
+        <line x1="11.20" y1="4.89" x2="9.90" y2="2.63"/>
+        <line x1="16.00" y1="3.60" x2="16.00" y2="1.00"/>
+        <line x1="20.80" y1="4.89" x2="22.10" y2="2.63"/>
+        <line x1="23.77" y1="7.56" x2="25.87" y2="6.03"/>
+        <line x1="25.39" y1="11.20" x2="27.93" y2="10.66"/>
+      </g>
+      <g class="header-mark-ground">
+        <path d="M20.81 24.18 A6.8 2.58 0 1 1 11.19 24.18"/>
+        <path d="M17.84 25.30 A2.6 0.99 0 1 1 14.16 25.30"/>
+      </g>
+      <path class="header-mark-pin" d="M16 6c-4 0-7.2 3.2-7.2 7.2 0 5.2 7.2 12.8 7.2 12.8s7.2-7.6 7.2-12.8C23.2 9.2 20 6 16 6z"/>
+      <circle class="header-mark-dot" cx="16" cy="13.2" r="2.9"/>
+    </svg>
+  </div>
+</header>
+
+{% comment %}
+Navigation: plain anchor links, no JavaScript. Each href must match a heading
+ID pinned in index.md, e.g. "## Call for Papers" carries the id "cfp".
+
+The hamburger menu on small screens is a CSS-only checkbox toggle — no
+JavaScript. A <details>/<summary> disclosure would be more semantic, but
+browsers slot a closed <details>' contents into an internal element that CSS
+cannot reveal, so the list could not be forced open again on wide screens.
+
+The checkbox is visually hidden but still keyboard-focusable; its focus ring is
+drawn on the label. At >=992px the checkbox and label are hidden and the list is
+laid out horizontally.
+{% endcomment %}
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner container">
+    <input class="nav-checkbox" type="checkbox" id="nav-toggle">
+    <label class="nav-toggle" for="nav-toggle">
+      <svg class="nav-toggle-icon" viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+        <rect y="0" width="20" height="2" rx="1"/>
+        <rect y="6" width="20" height="2" rx="1"/>
+        <rect y="12" width="20" height="2" rx="1"/>
+      </svg>
+      Menu
+    </label>
+    <ul class="nav nav-list flex-wrap">
+      <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+      <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+      <li class="nav-item"><a class="nav-link" href="#cfp">Call for Papers</a></li>
+      <li class="nav-item"><a class="nav-link" href="#dates">Important Dates</a></li>
+      <li class="nav-item"><a class="nav-link" href="#program">Program</a></li>
+      <li class="nav-item"><a class="nav-link" href="#committee">Committee</a></li>
+      <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    {{ site.title }} &middot; New Directions in IP Geolocation &middot; {{ site.conference }}
+  </div>
+</footer>
+
+</body>
+</html>

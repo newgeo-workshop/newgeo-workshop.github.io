@@ -1,0 +1,456 @@
+/* NewGeo 2026 — overrides on top of Bootstrap 5.3. No JavaScript anywhere.
+   The page body is generated from index.md by Jekyll, so these rules target
+   plain Markdown output (bare <table>, <blockquote>, <h2>) rather than classes. */
+
+:root {
+  /* Warm paper background and warm neutrals, with a deep teal primary and a
+     burnt-amber secondary used for small accents. */
+  /* --ng-canvas is the surround outside the content column; --ng-bg is the
+     column itself. Nudge --ng-canvas to change how strongly the page stands out. */
+  --ng-canvas: #f0ebe1;
+  --ng-bg: #fbfaf7;
+  --ng-surface: #ffffff;
+  --ng-text: #22201d;
+  --ng-muted: #6b665f;
+  --ng-accent: #0f6156;
+  --ng-accent-dark: #0a423b;
+  --ng-highlight: #b3541e;
+  --ng-border: #e6e1d8;
+  --ng-max-width: 1000px;
+  /* Header watermark size; also drives its vertical offset (see .header-mark). */
+  --ng-mark-size: clamp(112px, 14vw, 192px);
+  --ng-display: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  /* Offset used so anchor jumps clear the sticky nav. Only applies at widths
+     where the nav fits on a single row — see the media query at the bottom. */
+  --ng-anchor-offset: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ng-canvas);
+  color: var(--ng-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  /* Email addresses and URLs must never force the page to scroll sideways. */
+  overflow-wrap: break-word;
+}
+
+.container {
+  max-width: var(--ng-max-width);
+}
+
+a {
+  color: var(--ng-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  color: var(--ng-highlight);
+}
+
+code {
+  color: var(--ng-highlight);
+}
+
+/* ---------- Header ----------
+   Left-aligned, with a thin amber rule across the top of the page. */
+
+/* The amber rule spans the full viewport; the white panel and its padding sit on
+   .header-inner so the panel matches the content column's width and the empty
+   gutters either side stay canvas-coloured, as they are further down the page. */
+.site-header {
+  border-top: 4px solid var(--ng-highlight);
+  border-bottom: 1px solid var(--ng-border);
+}
+
+.header-inner {
+  background: var(--ng-surface);
+  /* Headroom for the mark, which is lifted towards the title and needs space
+     above so its rays clear the amber top rule. Reduced below 768px, where the
+     mark is hidden (see the narrow-screen media query). */
+  padding-top: 4rem;
+  padding-bottom: 2.25rem;
+  display: flex;
+  /* Top-aligned so the mark sits level with the title rather than being
+     centred against the whole text block, which pushed it too low. */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Enlarged, faded version of the favicon's pin, with lightbulb-style rays.
+   Decorative only — `flex: 0 0 auto` keeps it from being squeezed, and it is
+   hidden below 768px (see media query). The dot is filled with the header
+   background so it reads as a hole. */
+.header-mark {
+  flex: 0 0 auto;
+  width: var(--ng-mark-size);
+  /* Inset from the right edge so the mark sits inboard rather than hugging the
+     container's far side. */
+  margin-right: clamp(1rem, 7%, 5rem);
+  /* Positions the pin's head relative to the title. The head sits 0.515 x the
+     element's WIDTH below its top edge, so scaling the offset with the size
+     keeps it put at every width instead of drifting as the mark grows. The
+     constant below is the head's offset from the text block's top: the title's
+     ink centre is ~34px down, so 54px places the head 20px lower than the
+     title's centre line. Raise or lower that number to nudge the mark. */
+  margin-top: calc(54px - 0.515 * var(--ng-mark-size));
+  height: auto;
+  opacity: 0.18;
+}
+
+.header-mark-pin {
+  fill: var(--ng-accent);
+}
+
+.header-mark-dot {
+  fill: var(--ng-surface);
+}
+
+.header-mark-rays {
+  fill: none;
+  stroke: var(--ng-accent);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+/* Rings encircling the pin's tip, marking the spot it drops onto. They are 270°
+   arcs (75% of a circle) rather than closed ellipses: the missing quarter is
+   centred on the top, where each ring would otherwise run behind the pin, so
+   that space is left empty instead of intersecting it.
+
+   Both share a ry/rx of 0.38 so they read as circles on one ground plane seen
+   at the same angle. Their radii are spread far enough apart that the 1.59-unit
+   vertical separation at the bottom clears this stroke width — otherwise the two
+   strokes overlap there and the rings merge into a single shape. */
+.header-mark-ground {
+  fill: none;
+  stroke: var(--ng-accent);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+
+.site-title {
+  margin: 0;
+  color: var(--ng-accent);
+  font-family: var(--ng-display);
+  font-size: clamp(2.3rem, 6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.site-subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--ng-text);
+  font-family: var(--ng-display);
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  font-weight: 400;
+}
+
+/* Event details read as a plain line of text: date, place, then the host
+   conference underneath. */
+.event-meta {
+  margin: 1.35rem 0 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.event-place::before {
+  content: "—";
+  margin: 0 0.55rem;
+  color: var(--ng-muted);
+  font-weight: 400;
+}
+
+.event-colocated {
+  margin: 0.25rem 0 0;
+  color: var(--ng-muted);
+  font-size: 0.98rem;
+}
+
+/* ---------- Navigation ----------
+   A dark teal bar with uppercase links. Below 992px it collapses into a native
+   <details> disclosure — the hamburger menu — because eight links would
+   otherwise wrap onto several rows. At >=992px the row fits on one line, the
+   hamburger is hidden, and the bar becomes sticky. */
+
+/* The teal band sits on the full-width <nav>, so it spans the whole viewport,
+   while .nav-inner is a .container — the links span exactly the content column,
+   flush with the title above and the body text below. */
+.site-nav {
+  z-index: 10;
+  background: var(--ng-accent-dark);
+}
+
+/* Visually hidden but still keyboard-focusable — `display: none` would take the
+   checkbox out of the tab order and break keyboard access to the menu. */
+.nav-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* The checkbox is invisible, so its focus ring has to appear on the label. */
+.nav-checkbox:focus-visible + .nav-toggle {
+  outline: 2px solid var(--ng-highlight);
+  outline-offset: -2px;
+}
+
+.nav-toggle-icon {
+  width: 20px;
+  height: 14px;
+  fill: currentcolor;
+}
+
+/* Collapsed by default; revealed when the checkbox is checked. Stacked so each
+   link is a comfortable tap target. */
+.site-nav .nav-list {
+  display: none;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+.nav-checkbox:checked ~ .nav-list {
+  display: flex;
+}
+
+.nav-checkbox:checked + .nav-toggle {
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.site-nav .nav-link {
+  padding: 0.6rem 0;
+  border-bottom: 2px solid transparent;
+  color: rgb(255 255 255 / 82%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.site-nav .nav-link:hover {
+  border-bottom-color: var(--ng-highlight);
+  color: #ffffff;
+}
+
+/* ---------- Headings ----------
+   Section headings are marked with a left accent bar instead of a full-width
+   rule underneath. */
+
+/* The content column is lighter than the surrounding canvas, so the empty
+   gutters either side of it read as darker. `flow-root` stops the first
+   heading's top margin collapsing out of the panel, which would otherwise leave
+   a strip of canvas colour between the nav and the top of the column. */
+main {
+  display: flow-root;
+  background: var(--ng-bg);
+  padding-bottom: 3rem;
+}
+
+h2 {
+  /* Each h2 is a section start: it needs the anchor offset, not a wrapper. */
+  scroll-margin-top: var(--ng-anchor-offset);
+  margin: 2.75rem 0 1.1rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--ng-accent);
+  color: var(--ng-accent-dark);
+  font-family: var(--ng-display);
+  font-size: clamp(1.45rem, 3.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  margin: 2rem 0 0.7rem;
+  color: var(--ng-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Opening paragraph of the Overview section reads as a lead. */
+#overview + p {
+  font-size: 1.15rem;
+}
+
+/* ---------- Notices (Markdown blockquotes) ---------- */
+
+blockquote {
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.9rem;
+  border-left: 3px solid var(--ng-highlight);
+  background: rgb(179 84 30 / 5%);
+  color: var(--ng-muted);
+  font-size: 0.95rem;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Lists ---------- */
+
+main ul {
+  padding-left: 1.35rem;
+}
+
+main li {
+  margin-bottom: 0.3rem;
+}
+
+main li::marker {
+  color: var(--ng-highlight);
+}
+
+/* ---------- Tables ----------
+   Markdown emits a bare <table>, so all of this is ours; Bootstrap only styles
+   elements carrying its .table class. */
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: var(--ng-surface);
+  border: 1px solid var(--ng-border);
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--ng-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: var(--ng-accent);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Keeps the program's time ranges on one line — the long Activity column
+   otherwise squeezes them and they break at the en dash. Currently unused: the
+   program is TBD. It applies as soon as a table marked `{: .program}` is added
+   back to index.md, so leave this rule in place. */
+.program td:first-child {
+  white-space: nowrap;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--ng-accent-dark);
+  padding: 1.75rem 0;
+  color: rgb(255 255 255 / 72%);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Narrow screens ---------- */
+
+@media (max-width: 767px) {
+  /* Not enough room beside the title; the mark would crowd it. */
+  .header-mark {
+    display: none;
+  }
+
+  /* With no mark, the header does not need the extra headroom. */
+  .header-inner {
+    padding-top: 2.75rem;
+  }
+}
+
+@media (max-width: 575px) {
+  /* Put the location on its own line; otherwise the em dash can orphan at the
+     start of a wrapped line. */
+  .event-place {
+    display: block;
+  }
+
+  .event-place::before {
+    content: none;
+  }
+
+  th,
+  td {
+    padding: 0.5rem 0.55rem;
+  }
+}
+
+/* ---------- Wide screens ----------
+   The eight links fit one row here, so drop the hamburger, lay the list out
+   horizontally, and make the bar sticky. */
+
+@media (min-width: 992px) {
+  :root {
+    --ng-anchor-offset: 4.5rem;
+  }
+
+  .site-nav {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-checkbox,
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Always visible here, whatever state the checkbox was left in. Spread across
+     the content column so the links fill it rather than bunching on the left. */
+  .site-nav .nav-list,
+  .nav-checkbox:checked ~ .nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0;
+  }
+
+  .site-nav .nav-link {
+    padding: 0.7rem 0.8rem;
+  }
+
+  /* Flush the outermost links so they align with the content column's edges. */
+  .site-nav .nav-item:first-child .nav-link {
+    padding-left: 0;
+  }
+
+  .site-nav .nav-item:last-child .nav-link {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,30 @@
+# NewGeo 2026 — site-wide settings.
+# These values are used by _layouts/default.html and index.md.
+
+title: NewGeo 2026
+subtitle: New Directions in IP Geolocation Workshop
+description: >-
+  NewGeo 2026: New Directions in IP Geolocation Workshop, co-located with
+  ACM IMC 2026 in Karlsruhe, Germany.
+url: https://newgeows.github.io
+
+# Event details shown in the page header.
+conference: ACM IMC 2026
+location: Karlsruhe, Germany
+
+# Every date on the site lives here — the Important Dates table in index.md
+# reads all four, and `workshop_date` additionally feeds the page header and the
+# Venue section, so it only ever needs changing in this one place.
+# Deadlines are 23:59 AoE (UTC-12); that note is in index.md.
+submission_date: Sunday, September 6, 2026
+notification_date: Sunday, September 20, 2026
+camera_ready_date: Sunday, October 4, 2026
+workshop_date: Monday, October 12, 2026
+
+markdown: kramdown
+kramdown:
+  input: GFM              # GitHub-flavoured Markdown: pipe tables, fenced code
+  auto_ids: true          # headings get id attributes for the nav anchors
+
+exclude:
+  - README.md
