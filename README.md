@@ -1,10 +1,10 @@
-# newgeows.github.io
+# newgeo-workshop.github.io
 
 Website for **NewGeo 2026 — New Directions in IP Geolocation Workshop**, co-located with
 [ACM IMC 2026](https://conferences.sigcomm.org/imc/2026/) in Karlsruhe, Germany, on
 Monday, October 12, 2026.
 
-Published at <https://newgeows.github.io/>.
+Published at <https://newgeo-workshop.github.io/>.
 
 ## How it works
 
