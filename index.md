@@ -79,8 +79,8 @@ Submissions must be original work not previously published and not under review 
 Papers should be at most **4 pages in length, excluding references**, formatted according to
 the ACM two-column `sigconf` style using the [ACM
 template](https://www.acm.org/publications/proceedings-template). All
-submissions will undergo **double-blind** peer review by the program committee. Accepted
-papers will be presented at the workshop.
+submissions will undergo **double-blind** peer review by the program committee, i.e., submissions must be anonymised: omit author names and affiliations, and refer to your own prior work in the third person.
+Accepted papers will be presented at the workshop.
 
 See the [IMC 2026 submission
 instructions](https://conferences.sigcomm.org/imc/2026/submission-instructions/) for general
