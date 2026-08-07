@@ -45,7 +45,7 @@ structured workshop co-located with IMC.
 {% comment %} Add new items at the top of this list. {% endcomment %}
 
 - **2026-08-07**: Workshop website launched.
-- **2026-07-07**: NewGeo was accepted as an ACM IMC 2026 workshop..
+- **2026-07-07**: NewGeo was accepted as an ACM IMC 2026 workshop.
 
 ## Call for Papers {#cfp}
 
