@@ -64,29 +64,41 @@ If you change the pin in favicon.svg, change it here too.
 </header>
 
 {% comment %}
-Navigation: plain anchor links, no JavaScript. Each href must match a heading
-ID pinned in index.md, e.g. "## Call for Papers" carries the id "cfp".
+Navigation: plain anchor links, no JavaScript. Each of the eight hrefs must match
+a heading ID pinned in index.md, e.g. "## Call for Papers" carries the id "cfp".
 
-The hamburger menu on small screens is a CSS-only checkbox toggle — no
-JavaScript. A <details>/<summary> disclosure would be more semantic, but
-browsers slot a closed <details>' contents into an internal element that CSS
-cannot reveal, so the list could not be forced open again on wide screens.
+The hamburger menu on small screens is driven entirely by the URL fragment: the
+menu is open exactly when this <nav> is the :target, i.e. when the fragment is
+"#menu". Tapping one of the eight links sets the fragment to that section, so the
+nav stops being the target and the menu closes on its own as it scrolls — which is
+what a checkbox toggle could not do, since nothing in CSS can uncheck a box when a
+link elsewhere is clicked.
 
-The checkbox is visually hidden but still keyboard-focusable; its focus ring is
-drawn on the label. At >=992px the checkbox and label are hidden and the list is
-laid out horizontally.
+That makes "menu" and "menu-closed" reserved IDs: never give a heading in index.md
+either one. The Close link targets itself, so dismissing the menu leaves the
+scroll position alone and does not strand "#menu" in the address bar.
+
+Both toggles are ordinary links, so they are keyboard-focusable and carry their own
+focus ring; whichever one does not apply is display:none and drops out of the tab
+order with it. At >=992px both are hidden and the list is laid out horizontally.
 {% endcomment %}
-<nav class="site-nav" aria-label="Main navigation">
+<nav class="site-nav" id="menu" aria-label="Main navigation">
   <div class="nav-inner container">
-    <input class="nav-checkbox" type="checkbox" id="nav-toggle">
-    <label class="nav-toggle" for="nav-toggle">
+    <a class="nav-toggle nav-toggle-open" href="#menu">
       <svg class="nav-toggle-icon" viewBox="0 0 20 14" aria-hidden="true" focusable="false">
         <rect y="0" width="20" height="2" rx="1"/>
         <rect y="6" width="20" height="2" rx="1"/>
         <rect y="12" width="20" height="2" rx="1"/>
       </svg>
       Menu
-    </label>
+    </a>
+    <a class="nav-toggle nav-toggle-close" id="menu-closed" href="#menu-closed">
+      <svg class="nav-toggle-icon" viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+        <path d="M5 2 15 12 M15 2 5 12" fill="none" stroke="currentcolor"
+              stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Close
+    </a>
     <ul class="nav nav-list flex-wrap">
       <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
       <li class="nav-item"><a class="nav-link" href="#news">News</a></li>

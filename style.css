@@ -21,9 +21,10 @@
   --ng-mark-size: clamp(112px, 14vw, 192px);
   --ng-display: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
-  /* Offset used so anchor jumps clear the sticky nav. Only applies at widths
-     where the nav fits on a single row — see the media query at the bottom. */
-  --ng-anchor-offset: 1rem;
+  /* Offset so anchor jumps land below the sticky nav instead of underneath it.
+     This value clears the collapsed hamburger bar; the media query at the bottom
+     raises it for the taller single-row bar on wide screens. */
+  --ng-anchor-offset: 3.75rem;
 }
 
 html {
@@ -53,8 +54,33 @@ a:hover {
   color: var(--ng-highlight);
 }
 
+/* overflow-wrap keeps long space-free spans (e.g. the `sigconf` mentions in the
+   submission guidelines) from pushing the layout wider than the viewport. */
 code {
   color: var(--ng-highlight);
+  overflow-wrap: anywhere;
+}
+
+/* Fenced code blocks. Rouge nests them as
+   div.highlighter-rouge > div.highlight > pre.highlight > code, and those two
+   wrapper divs are unstyled, so the box and its spacing go on <pre> — that covers
+   the rouge case and a bare <pre> alike. Do not add a `.highlight { margin: 0 }`
+   rule: it also matches pre.highlight and, being the more specific selector, would
+   silently cancel the margin-bottom below. */
+pre {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--ng-border);
+  border-left: 3px solid var(--ng-highlight);
+  background: var(--ng-surface);
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+/* Long lines scroll inside the box rather than breaking mid-token, so undo the
+   inline-code overflow-wrap above. */
+pre code {
+  overflow-wrap: normal;
 }
 
 /* ---------- Header ----------
@@ -175,33 +201,25 @@ code {
 }
 
 /* ---------- Navigation ----------
-   A dark teal bar with uppercase links. Below 992px it collapses into a native
-   <details> disclosure — the hamburger menu — because eight links would
-   otherwise wrap onto several rows. At >=992px the row fits on one line, the
-   hamburger is hidden, and the bar becomes sticky. */
+   A dark teal bar with uppercase links, sticky at every width. Below 992px it
+   collapses into the hamburger menu — open exactly while the nav is the :target,
+   see the comment in _layouts/default.html — because eight links would otherwise
+   wrap onto several rows. At >=992px the row fits on one line and the hamburger
+   is hidden. */
 
 /* The teal band sits on the full-width <nav>, so it spans the whole viewport,
    while .nav-inner is a .container — the links span exactly the content column,
    flush with the title above and the body text below. */
 .site-nav {
+  position: sticky;
+  top: 0;
   z-index: 10;
   background: var(--ng-accent-dark);
 }
 
-/* Visually hidden but still keyboard-focusable — `display: none` would take the
-   checkbox out of the tab order and break keyboard access to the menu. */
-.nav-checkbox {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip-path: inset(50%);
-  overflow: hidden;
-  white-space: nowrap;
-}
-
+/* The two hamburger toggles. Both are links, so they need the generic <a> colour
+   and underline overridden — including on hover, where `a:hover` would otherwise
+   turn them amber. */
 .nav-toggle {
   display: flex;
   align-items: center;
@@ -213,11 +231,15 @@ code {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.07em;
+  text-decoration: none;
   text-transform: uppercase;
 }
 
-/* The checkbox is invisible, so its focus ring has to appear on the label. */
-.nav-checkbox:focus-visible + .nav-toggle {
+.nav-toggle:hover {
+  color: #ffffff;
+}
+
+.nav-toggle:focus-visible {
   outline: 2px solid var(--ng-highlight);
   outline-offset: -2px;
 }
@@ -228,7 +250,7 @@ code {
   fill: currentcolor;
 }
 
-/* Collapsed by default; revealed when the checkbox is checked. Stacked so each
+/* Collapsed by default; revealed while the nav is the :target. Stacked so each
    link is a comfortable tap target. */
 .site-nav .nav-list {
   display: none;
@@ -236,11 +258,27 @@ code {
   padding-bottom: 0.5rem;
 }
 
-.nav-checkbox:checked ~ .nav-list {
+/* The bar is sticky, so the open menu is capped to the space below it and scrolls
+   internally — eight stacked links would otherwise blanket a short viewport
+   (a phone in landscape) with no way to reach the page. */
+.site-nav:target .nav-list {
   display: flex;
+  max-height: calc(100vh - 3.75rem);
+  max-height: calc(100dvh - 3.75rem);
+  overflow-y: auto;
 }
 
-.nav-checkbox:checked + .nav-toggle {
+/* Only one toggle is ever present: Menu while closed, Close while open. */
+.nav-toggle-close {
+  display: none;
+}
+
+.site-nav:target .nav-toggle-open {
+  display: none;
+}
+
+.site-nav:target .nav-toggle-close {
+  display: flex;
   border-bottom: 1px solid rgb(255 255 255 / 15%);
 }
 
@@ -413,31 +451,32 @@ tbody tr:last-child td {
 }
 
 /* ---------- Wide screens ----------
-   The eight links fit one row here, so drop the hamburger, lay the list out
-   horizontally, and make the bar sticky. */
+   The eight links fit one row here, so drop the hamburger and lay the list out
+   horizontally. The bar is already sticky at every width. */
 
 @media (min-width: 992px) {
   :root {
     --ng-anchor-offset: 4.5rem;
   }
 
-  .site-nav {
-    position: sticky;
-    top: 0;
-  }
-
-  .nav-checkbox,
-  .nav-toggle {
+  /* The second selector is needed because a fragment of "#menu" still makes the
+     nav the :target at this width, and that rule below is more specific than
+     `.nav-toggle` alone. */
+  .nav-toggle,
+  .site-nav:target .nav-toggle-close {
     display: none;
   }
 
-  /* Always visible here, whatever state the checkbox was left in. Spread across
-     the content column so the links fill it rather than bunching on the left. */
+  /* Always visible here, whatever the fragment happens to be — so the collapsed
+     menu's height cap has to be lifted explicitly too. Spread across the content
+     column so the links fill it rather than bunching on the left. */
   .site-nav .nav-list,
-  .nav-checkbox:checked ~ .nav-list {
+  .site-nav:target .nav-list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-height: none;
+    overflow-y: visible;
     padding-bottom: 0;
   }
 

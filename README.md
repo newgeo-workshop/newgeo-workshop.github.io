@@ -31,7 +31,9 @@ Almost everything lives in `index.md` as ordinary Markdown. Three conventions to
 
 - **Heading anchors.** The `{#id}` after each `##` heading is what the nav links point at,
   e.g. `## Call for Papers {#cfp}`. Rename the heading text freely, but keep the `{#id}` or
-  the corresponding nav link in `_layouts/default.html` will break.
+  the corresponding nav link in `_layouts/default.html` will break. Two IDs are reserved:
+  `menu` and `menu-closed` drive the mobile hamburger menu, so do not give a heading either
+  one — a heading called `{#menu}` would leave the menu stuck open.
 - **Notices.** A blockquote (`> ...`) renders as a small grey italic note.
 - **Editor notes.** `{% comment %} ... {% endcomment %}` blocks are stripped at build time
   and never appear in the published page.

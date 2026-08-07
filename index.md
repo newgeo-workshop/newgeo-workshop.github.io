@@ -44,9 +44,8 @@ structured workshop co-located with IMC.
 
 {% comment %} Add new items at the top of this list. {% endcomment %}
 
-- **August 2026** — Workshop website launched.
-- **July 2026** — NewGeo was accepted as part of the ACM IMC 2026 Workshop and Hackathon
-  Program.
+- **2026-08-07**: Workshop website launched.
+- **2026-07-07**: NewGeo was accepted as an ACM IMC 2026 workshop..
 
 ## Call for Papers {#cfp}
 
@@ -76,15 +75,20 @@ We solicit short papers on topics including, but not limited to:
 ### Submission Guidelines
 
 Submissions must be original work not previously published and not under review elsewhere.
-Papers should be at most **4 pages in length, excluding references** with an optional one page appendix, formatted according to
-the ACM two-column `sigconf` style using the [ACM
-template](https://www.acm.org/publications/proceedings-template). All
-submissions will undergo **double-blind** peer review by the program committee, i.e., submissions must be anonymised: omit author names and affiliations, and refer to your own prior work in the third person.
-Accepted papers will be presented at the workshop.
+Papers must be at most **4 pages in length, excluding references** with an optional one page appendix.
+Papers are to be formatted according to the ACM two-column `sigconf` style using the [ACM template](https://www.acm.org/publications/proceedings-template) in letterpaper format with a font size of 10pt.
+You can use the following LaTeX documentclass:
 
-See the [IMC 2026 submission
-instructions](https://conferences.sigcomm.org/imc/2026/submission-instructions/) for general
-formatting guidance.
+```latex
+\documentclass[10pt,sigconf,letterpaper,anonymous,nonacm]{acmart}
+```
+
+All submissions will undergo **double-blind** peer review by the program committee, i.e., submissions must be anonymised: omit author names and affiliations, and refer to your own prior work in the third person.
+Papers violating the submission guidelines will be desk-rejected.
+Accepted papers will be presented at the workshop, and at least one author of each paper is expected to attend in-person.
+
+Authors must adhere to the [ACM's author guidelines on the use of Generative AI](https://www.acm.org/publications/policies/frequently-asked-questions).
+See the [IMC 2026 submission instructions](https://conferences.sigcomm.org/imc/2026/submission-instructions/) for general formatting guidance.
 
 Authors are encouraged to make their measurement data and analysis code available to support
 reproducibility.
@@ -151,18 +155,12 @@ only — do not publish PC members' email addresses.
 
 ## Venue & Attendance {#venue}
 
-NewGeo 2026 takes place on **{{ site.workshop_date }}**, co-located with [ACM IMC
-2026](https://conferences.sigcomm.org/imc/2026/) at the Audimax on the Karlsruhe Institute of
-Technology campus in Karlsruhe, Germany. The room will be announced by the conference
-organizers.
+NewGeo 2026 takes place on **{{ site.workshop_date }}**, co-located with [ACM IMC 2026](https://conferences.sigcomm.org/imc/2026/) in Karlsruhe, Germany. The exact room is still TBD and will be announced ahead of the workshop.
 
-Attendance is handled through the standard [IMC 2026
-registration](https://conferences.sigcomm.org/imc/2026/registration/) process. NewGeo is also
-listed among the [IMC 2026 co-located
-events](https://conferences.sigcomm.org/imc/2026/events/newgeo/).
+Attendance is handled through the standard [IMC 2026 registration](https://conferences.sigcomm.org/imc/2026/registration/) process.
+NewGeo is also listed among the [IMC 2026 co-located events](https://conferences.sigcomm.org/imc/2026/events/newgeo/).
 
-The workshop welcomes participation from academic researchers, network operators, geolocation
-data providers, RIR staff, Internet standardization contributors, and policymakers.
+The workshop welcomes participation from academic researchers, network operators, geolocation data providers, RIR staff, Internet standardization contributors, and policymakers.
 
 ## Contact {#contact}
 
