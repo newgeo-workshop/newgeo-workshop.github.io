@@ -76,7 +76,7 @@ We solicit short papers on topics including, but not limited to:
 ### Submission Guidelines
 
 Submissions must be original work not previously published and not under review elsewhere.
-Papers should be at most **4 pages in length, excluding references**, formatted according to
+Papers should be at most **4 pages in length, excluding references** with an optional one page appendix, formatted according to
 the ACM two-column `sigconf` style using the [ACM
 template](https://www.acm.org/publications/proceedings-template). All
 submissions will undergo **double-blind** peer review by the program committee, i.e., submissions must be anonymised: omit author names and affiliations, and refer to your own prior work in the third person.
