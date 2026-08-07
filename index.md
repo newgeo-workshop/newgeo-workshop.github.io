@@ -151,6 +151,7 @@ only — do not publish PC members' email addresses.
 | Mirja Kühlewind | Ericsson |
 | Patrick Sattler | BENOCS |
 | Phillipa Gill | Google |
+| Stephen Strowes | Fastly |
 | Thomas Krenc | IIJ |
 | Vasilis Giotsas | Cloudflare |
 
