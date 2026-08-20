@@ -97,7 +97,7 @@ reproducibility.
 
 {% comment %} Replace this paragraph with the HotCRP link once it is available. {% endcomment %}
 
-Submissions will be handled via HotCRP. The submission URL will be announced here.
+Submissions via HotCRP: [https://newgeo26.hotcrp.com/](https://newgeo26.hotcrp.com/). 
 
 ## Important Dates {#dates}
 
