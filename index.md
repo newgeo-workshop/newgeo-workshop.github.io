@@ -149,6 +149,7 @@ only — do not publish PC members' email addresses.
 | --- | --- |
 | Francesco Bronzino | ENS Lyon |
 | Ioana Livadariu | Simula |
+| Johanna Ullrich | IT-U Linz |
 | Kevin Vermeulen | Ecole Polytechnique |
 | Mirja Kühlewind | Ericsson |
 | Patrick Sattler | BENOCS |
