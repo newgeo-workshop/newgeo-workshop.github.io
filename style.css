@@ -325,6 +325,8 @@ h2 {
 }
 
 h3 {
+  /* Subsections get linked directly too (e.g. #camera-ready-instructions). */
+  scroll-margin-top: var(--ng-anchor-offset);
   margin: 2rem 0 0.7rem;
   color: var(--ng-text);
   font-size: 1.05rem;
