@@ -44,6 +44,7 @@ structured workshop co-located with IMC.
 
 {% comment %} Add new items at the top of this list. {% endcomment %}
 
+- **2026-09-22**: Posted camera-ready instructions.
 - **2026-08-20**: Added HotCRP submission site.
 - **2026-08-07**: Workshop website launched.
 - **2026-07-07**: NewGeo was accepted as an ACM IMC 2026 workshop.
@@ -99,6 +100,31 @@ reproducibility.
 {% comment %} Replace this paragraph with the HotCRP link once it is available. {% endcomment %}
 
 Submissions via HotCRP: [https://newgeo26.hotcrp.com/](https://newgeo26.hotcrp.com/). 
+
+### Camera-ready Instructions
+
+Authors of accepted papers should prepare their camera-ready version using the following LaTeX documentclass:
+
+```latex
+\documentclass[9pt,sigconf,letterpaper,nonacm]{acmart}
+```
+
+To show the workshop name, date, and venue in the page header, add the following to your preamble.
+This is needed because the `nonacm` option otherwise removes the conference information from the header.
+
+```latex
+\acmConference[NewGeo '26]{New Directions in IP Geolocation Workshop}{October 12, 2026}{Karlsruhe, Germany}
+\makeatletter
+\AtBeginDocument{\fancyhead[LE,RO]{\@headfootfont\acmConference@shortname,
+  \acmConference@date, \acmConference@venue}}
+\makeatother
+```
+
+Please de-anonymize your paper: remove the `anonymous` option, add all author names and affiliations, and restore any content that was anonymized for review (e.g., self-citations, acknowledgments, project names, and links to code or data).
+Please also address the reviewers' comments.
+
+Upload the final version of your paper as a PDF to [HotCRP](https://newgeo26.hotcrp.com/) by **{{ site.camera_ready_date }}**.
+Accepted papers will be made available on the workshop website.
 
 ## Important Dates {#dates}
 
