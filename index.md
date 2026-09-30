@@ -143,19 +143,68 @@ Accepted papers will be made available on the workshop website.
 ## Program {#program}
 
 {% comment %}
-Keep `{: .program}` on the line directly beneath the table — that marker is what
-stops the time ranges from wrapping mid-range. Within a cell, <br> starts a new
-line (one per paper).
+The program is an HTML table rather than a Markdown one: Markdown table cells
+cannot hold a bulleted list, and each session needs one for its papers. Kramdown
+passes an HTML block through untouched, so write & as &amp; and use typographic
+quotes (’) directly.
+
+Each paper is one <li>: the title, then a <span class="authors"> with the author
+list. class="program" on the <table> is what stops the time ranges from wrapping
+mid-range and styles the paper lists; keep it.
 {% endcomment %}
 
-| Time | Activity |
-| --- | --- |
-| 09:00–09:20 | **Welcome by the Chairs**<br>Oliver Gasser & Robert Beverly<br>*Open challenges in IP geolocation, why we started NewGeo, and plans for a workshop report in ACM SIGCOMM CCR — collaborators welcome* |
-| 09:20–10:40 | **Session 1: A Fresh Look at Geolocation**<br>Diagnosing Accuracy Limitations in Constraint-Based IP Geolocation<br>Through the Looking Glass: Analyzing Geolocation Providers using Looking Glasses and Active Measurements<br>Reactive Constraint-Based Geolocation of Internet Hosts<br>RIPE Atlas Measurements and Geolocation Providers: A Longitudinal Consistency Evaluation |
-| 10:40–11:00 | **Break** with refreshments |
-| 11:00–12:00 | **Session 2: Novel Technologies**<br>Where Does This IP Think It Is? Geolocation Accuracy in the Age of Starlink, CGNAT, and Geofeeds<br>A First Look at Starlink's Geofeeds: On Discrepancies between Feeds and Routing<br>Leveraging Large Language Models to Locate Routers: Using LLMs for Parsing rDNS Hostnames |
-| 12:00–12:10 | **Closing Remarks**<br>Robert Beverly & Oliver Gasser |
-{: .program}
+<table class="program">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>09:00–09:20</td>
+      <td><strong>Welcome by the Chairs</strong><br>Oliver Gasser &amp; Robert Beverly</td>
+    </tr>
+    <tr>
+      <td>09:20–10:40</td>
+      <td>
+        <strong>Session 1: A Fresh Look at Geolocation</strong>
+        <ul>
+          <li>Diagnosing Accuracy Limitations in Constraint-Based IP Geolocation
+            <span class="authors">S. Cho, Z. Weinberg, A. Bhattacharya</span></li>
+          <li>Through the Looking Glass: Analyzing Geolocation Providers using Looking Glasses and Active Measurements
+            <span class="authors">W. Leung, O. Gasser</span></li>
+          <li>Reactive Constraint-Based Geolocation of Internet Hosts
+            <span class="authors">S. Ye, C. Kanipe, P. Ryan, E. Rye</span></li>
+          <li>RIPE Atlas Measurements and Geolocation Providers: A Longitudinal Consistency Evaluation
+            <span class="authors">J. Marques, O. Gasser</span></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>10:40–11:00</td>
+      <td><strong>Break</strong> with refreshments</td>
+    </tr>
+    <tr>
+      <td>11:00–12:00</td>
+      <td>
+        <strong>Session 2: Novel Technologies</strong>
+        <ul>
+          <li>Where Does This IP Think It Is? Geolocation Accuracy in the Age of Starlink, CGNAT, and Geofeeds
+            <span class="authors">M. Tariq</span></li>
+          <li>A First Look at Starlink’s Geofeeds: On Discrepancies between Feeds and Routing
+            <span class="authors">T. Simon, E. Lanfer, T. Zimmermann, R. Hendriks, O. Gasser, N. Aschenbruck</span></li>
+          <li>Leveraging Large Language Models to Locate Routers: Using LLMs for Parsing rDNS Hostnames
+            <span class="authors">D. Athar, M. Abdullah, K. Salamatian, F. Douzet, J. Cowie, Q. Lone, Z. Qazi, Z. Uzmi</span></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>12:00–12:10</td>
+      <td><strong>Closing Remarks</strong><br>Robert Beverly &amp; Oliver Gasser</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Committee {#committee}
 

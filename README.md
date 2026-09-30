@@ -52,9 +52,11 @@ Common updates:
 
   Note: Jekyll does not pick up `_config.yml` changes while `jekyll serve` is running —
   restart it to see them.
-- **Update the program** — edit the Markdown table in the Program section of `index.md`;
-  use `<br>` within a cell to put each paper on its own line. Keep the `{: .program}` line
-  directly beneath the table — that is what stops the time ranges from wrapping mid-range.
+- **Update the program** — the Program section of `index.md` is an HTML table, not a
+  Markdown one, because Markdown table cells cannot hold the bulleted paper lists. Each paper
+  is an `<li>` with its title followed by `<span class="authors">…</span>`. Keep
+  `class="program"` on the `<table>` — that is what stops the time ranges from wrapping
+  mid-range and styles the paper lists.
 
 ## Local preview
 

@@ -404,10 +404,30 @@ tbody tr:last-child td {
 }
 
 /* Keeps the program's time ranges on one line — the long Activity column
-   otherwise squeezes them and they break at the en dash. Applies to the table
-   marked `{: .program}` in index.md. */
+   otherwise squeezes them and they break at the en dash. Applies to the
+   <table class="program"> in index.md. */
 .program td:first-child {
   white-space: nowrap;
+}
+
+/* A session's papers: one bullet each, with the authors on a muted line below
+   the title so neighbouring papers stay easy to tell apart. */
+.program ul {
+  margin: 0.4rem 0 0;
+}
+
+.program li {
+  margin-bottom: 0.45rem;
+}
+
+.program li:last-child {
+  margin-bottom: 0;
+}
+
+.program .authors {
+  display: block;
+  color: var(--ng-muted);
+  font-size: 0.9rem;
 }
 
 /* ---------- Footer ---------- */
