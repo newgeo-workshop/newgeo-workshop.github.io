@@ -404,9 +404,8 @@ tbody tr:last-child td {
 }
 
 /* Keeps the program's time ranges on one line — the long Activity column
-   otherwise squeezes them and they break at the en dash. Currently unused: the
-   program is TBD. It applies as soon as a table marked `{: .program}` is added
-   back to index.md, so leave this rule in place. */
+   otherwise squeezes them and they break at the en dash. Applies to the table
+   marked `{: .program}` in index.md. */
 .program td:first-child {
   white-space: nowrap;
 }

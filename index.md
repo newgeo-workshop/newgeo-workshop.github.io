@@ -44,6 +44,7 @@ structured workshop co-located with IMC.
 
 {% comment %} Add new items at the top of this list. {% endcomment %}
 
+- **2026-09-30**: Published the [workshop program](#program) and [venue room](#venue).
 - **2026-09-22**: Posted camera-ready instructions.
 - **2026-08-20**: Added HotCRP submission site.
 - **2026-08-07**: Workshop website launched.
@@ -142,18 +143,19 @@ Accepted papers will be made available on the workshop website.
 ## Program {#program}
 
 {% comment %}
-When the schedule is confirmed, replace the line below with a Markdown table and
-keep `{: .program}` on the line directly beneath it — that marker is what stops
-the time ranges from wrapping mid-range:
+Keep `{: .program}` on the line directly beneath the table — that marker is what
+stops the time ranges from wrapping mid-range. Within a cell, <br> starts a new
+line (one per paper).
+{% endcomment %}
 
 | Time | Activity |
 | --- | --- |
-| 09:00–09:10 | **Opening remarks** |
+| 09:00–09:20 | **Welcome by the Chairs**<br>Oliver Gasser & Robert Beverly<br>*Open challenges in IP geolocation, why we started NewGeo, and plans for a workshop report in ACM SIGCOMM CCR — collaborators welcome* |
+| 09:20–10:40 | **Session 1: A Fresh Look at Geolocation**<br>Diagnosing Accuracy Limitations in Constraint-Based IP Geolocation<br>Through the Looking Glass: Analyzing Geolocation Providers using Looking Glasses and Active Measurements<br>Reactive Constraint-Based Geolocation of Internet Hosts<br>RIPE Atlas Measurements and Geolocation Providers: A Longitudinal Consistency Evaluation |
+| 10:40–11:00 | **Break** with refreshments |
+| 11:00–12:00 | **Session 2: Novel Technologies**<br>Where Does This IP Think It Is? Geolocation Accuracy in the Age of Starlink, CGNAT, and Geofeeds<br>A First Look at Starlink's Geofeeds: On Discrepancies between Feeds and Routing<br>Leveraging Large Language Models to Locate Routers: Using LLMs for Parsing rDNS Hostnames |
+| 12:00–12:10 | **Closing Remarks**<br>Robert Beverly & Oliver Gasser |
 {: .program}
-{% endcomment %}
-
-TBD — the workshop program will be announced here once the accepted papers and scheduling
-are confirmed.
 
 ## Committee {#committee}
 
@@ -187,7 +189,7 @@ only — do not publish PC members' email addresses.
 
 ## Venue & Attendance {#venue}
 
-NewGeo 2026 takes place on **{{ site.workshop_date }}**, co-located with [ACM IMC 2026](https://conferences.sigcomm.org/imc/2026/) in Karlsruhe, Germany. The exact room is still TBD and will be announced ahead of the workshop.
+NewGeo 2026 takes place on **{{ site.workshop_date }}**, co-located with [ACM IMC 2026](https://conferences.sigcomm.org/imc/2026/) in Karlsruhe, Germany. The workshop is held in the [Engler-Bunte-Hörsaal (40.50)](https://www.kit.edu/campusplan/?id=40.50) at KIT.
 
 Attendance is handled through the standard [IMC 2026 registration](https://conferences.sigcomm.org/imc/2026/registration/) process.
 NewGeo is also listed among the [IMC 2026 co-located events](https://conferences.sigcomm.org/imc/2026/events/newgeo/).
