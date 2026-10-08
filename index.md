@@ -44,6 +44,7 @@ structured workshop co-located with IMC.
 
 {% comment %} Add new items at the top of this list. {% endcomment %}
 
+- **2026-10-08**: [Paper PDFs](#program) are now available in the program.
 - **2026-09-30**: Published the [workshop program](#program) and [venue room](#venue).
 - **2026-09-22**: Posted camera-ready instructions.
 - **2026-08-20**: Added HotCRP submission site.
@@ -148,9 +149,10 @@ cannot hold a bulleted list, and each session needs one for its papers. Kramdown
 passes an HTML block through untouched, so write & as &amp; and use typographic
 quotes (’) directly.
 
-Each paper is one <li>: the title, then a <span class="authors"> with the author
-list. class="program" on the <table> is what stops the time ranges from wrapping
-mid-range and styles the paper lists; keep it.
+Each paper is one <li>: the title, an <a class="paper-pdf"> link to its PDF in
+papers/ (the CSS adds the document icon), then a <span class="authors"> with the
+author list. class="program" on the <table> is what stops the time ranges from
+wrapping mid-range and styles the paper lists; keep it.
 {% endcomment %}
 
 <table class="program">
@@ -171,12 +173,16 @@ mid-range and styles the paper lists; keep it.
         <strong>Session 1: A Fresh Look at Geolocation</strong>
         <ul>
           <li>Diagnosing Accuracy Limitations in Constraint-Based IP Geolocation
+            <a class="paper-pdf" href="papers/cho2026diagnosing.pdf">PDF</a>
             <span class="authors">S. Cho, Z. Weinberg, A. Bhattacharya</span></li>
-          <li>Through the Looking Glass: Analyzing Geolocation Providers using Looking Glasses and Active Measurements
+          <li>Through the Looking Glass: Analyzing Geolocation Providers Using Looking Glasses and Active Measurements
+            <a class="paper-pdf" href="papers/leung2026through.pdf">PDF</a>
             <span class="authors">W. Leung, O. Gasser</span></li>
           <li>Reactive Constraint-Based Geolocation of Internet Hosts
+            <a class="paper-pdf" href="papers/ye2026reactive.pdf">PDF</a>
             <span class="authors">S. Ye, C. Kanipe, P. Ryan, E. Rye</span></li>
           <li>RIPE Atlas Measurements and Geolocation Providers: A Longitudinal Consistency Evaluation
+            <a class="paper-pdf" href="papers/marques2026ripe.pdf">PDF</a>
             <span class="authors">J. Marques, O. Gasser</span></li>
         </ul>
       </td>
@@ -191,10 +197,13 @@ mid-range and styles the paper lists; keep it.
         <strong>Session 2: Novel Technologies</strong>
         <ul>
           <li>Where Does This IP Think It Is? Geolocation Accuracy in the Age of Starlink, CGNAT, and Geofeeds
-            <span class="authors">M. Tariq</span></li>
+            <a class="paper-pdf" href="papers/tariq2026where.pdf">PDF</a>
+            <span class="authors">M. Tariq, D. Ahmad, S. Malik</span></li>
           <li>A First Look at Starlink’s Geofeeds: On Discrepancies between Feeds and Routing
+            <a class="paper-pdf" href="papers/simon2026first.pdf">PDF</a>
             <span class="authors">T. Simon, E. Lanfer, T. Zimmermann, R. Hendriks, O. Gasser, N. Aschenbruck</span></li>
           <li>Leveraging Large Language Models to Locate Routers: Using LLMs for Parsing rDNS Hostnames
+            <a class="paper-pdf" href="papers/athar2026leveraging.pdf">PDF</a>
             <span class="authors">D. Athar, M. Abdullah, K. Salamatian, F. Douzet, J. Cowie, Q. Lone, Z. Qazi, Z. Uzmi</span></li>
         </ul>
       </td>

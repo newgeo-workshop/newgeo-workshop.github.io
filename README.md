@@ -54,7 +54,8 @@ Common updates:
   restart it to see them.
 - **Update the program** — the Program section of `index.md` is an HTML table, not a
   Markdown one, because Markdown table cells cannot hold the bulleted paper lists. Each paper
-  is an `<li>` with its title followed by `<span class="authors">…</span>`. Keep
+  is an `<li>` with its title, then `<a class="paper-pdf" href="papers/….pdf">PDF</a>`, then
+  `<span class="authors">…</span>`. Paper PDFs live in `papers/`. Keep
   `class="program"` on the `<table>` — that is what stops the time ranges from wrapping
   mid-range and styles the paper lists.
 
